@@ -39,7 +39,11 @@ export default function Home() {
   return (
     <div>
       <StaticBanner></StaticBanner>
-      <Carousel className="rounded-none h-[40rem]" autoplay={true} loop={true}>
+      <Carousel
+        className="rounded-none h-[40rem] z-10"
+        autoplay={true}
+        loop={true}
+      >
         {contents.map((obj) => (
           <div className="relative h-[40rem] w-full">
             <img

@@ -142,14 +142,18 @@ export function InfraStructureGallery() {
   return (
     <div>
       <Tabs value="reception" className="w-full z-10">
-        <TabsHeader className="z-10">
+        <TabsHeader className="flex flex-col sm:flex-row z-10">
           {data.map(({ label, value }) => (
-            <Tab key={value} value={value} className="lg:min-w-36">
+            <Tab
+              key={value}
+              value={value}
+              className="lg:min-w-36 sm:min-w-30 min-w-20"
+            >
               {label}
             </Tab>
           ))}
         </TabsHeader>
-        <TabsBody className="grid grid-cols-1 gap-4">
+        <TabsBody className="grid grid-cols-1 gap-4 p-4">
           {data.map(({ value, images }) => (
             <TabPanel
               className={`grid grid-cols-${images.length} gap-4 md:grid-cols-${images.length}`}
@@ -157,13 +161,18 @@ export function InfraStructureGallery() {
               value={value}
             >
               {images?.map(({ title, imageLink }, index) => (
-                <div key={index} className="flex flex-col">
+                <div
+                  key={index}
+                  className="flex flex-col justify-center items-center bg-orange-100 rounded-lg"
+                >
                   <img
-                    className="h-96 w-full max-w-full rounded-lg object-cover object-center"
+                    className={`h-96 w-64 sm:w-full ${
+                      title ? "rounded-t-lg rounded-b-none" : "rounded-lg"
+                    } object-cover object-center`}
                     src={imageLink}
                     alt="image-photo"
                   />
-                  <Typography>{title}</Typography>
+                  {title ? <Typography>{title}</Typography> : <></>}
                 </div>
               ))}
             </TabPanel>
